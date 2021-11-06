@@ -61,6 +61,15 @@ export function solarView(){
     const satTexture = new THREE.TextureLoader().load("./Images/2k_saturn.jpg");
     const satMaterial = new THREE.MeshBasicMaterial({map: satTexture});
     const saturn = new THREE.Mesh(satSphere,satMaterial);
+    const satGroup = new THREE.Group();
+    const ring = new THREE.TorusGeometry(36,4,2.5,100);
+    ring.translate(390,0,0);
+    const ringTexture = new THREE.TextureLoader().load("./Images/2k_saturn_ring_alpha.png");
+    const ringMaterial = new THREE.MeshBasicMaterial({map: ringTexture});
+    const sRing = new THREE.Mesh(ring,ringMaterial);
+    sRing.rotation.set(1,0,0);
+    satGroup.add(saturn);
+    satGroup.add(sRing);
 
     const uranSphere = new THREE.SphereGeometry(17,15,15);
     uranSphere.translate(460,0,0);
@@ -128,38 +137,47 @@ export function solarView(){
 
     //orbit animations
     const mercOrbit = new THREE.Group();
+    mercOrbit.rotation.y = (Math.random()/2) * 4;
     mercOrbit.add(mercury);
     mercOrbit.add(mercRing);
 
     const venusOrbit = new THREE.Group();
+    venusOrbit.rotation.y = (Math.random()/2) * 4;
     venusOrbit.add(venus);
     venusOrbit.add(venusRing);
     
     const earthOrbit = new THREE.Group();
+    earthOrbit.rotation.y = (Math.random()/2) * 4;
     earthOrbit.add(earth);
     earthOrbit.add(earthRing);
 
     const marsOrbit = new THREE.Group();
+    marsOrbit.rotation.y = (Math.random()/2) * 4;
     marsOrbit.add(mars);
     marsOrbit.add(marsRing);
 
     const jupOrbit = new THREE.Group();
+    jupOrbit.rotation.y = (Math.random()/2) * 4;
     jupOrbit.add(jupiter);
     jupOrbit.add(jupRing);
 
     const satOrbit = new THREE.Group();
-    satOrbit.add(saturn);
+    satOrbit.rotation.y = (Math.random()/2) * 4;
+    satOrbit.add(satGroup);
     satOrbit.add(satRing);
 
     const uranOrbit = new THREE.Group();
+    uranOrbit.rotation.y = (Math.random()/2) * 4;
     uranOrbit.add(uranus);
     uranOrbit.add(uranRing);
 
     const nepOrbit = new THREE.Group();
+    nepOrbit.rotation.y = (Math.random()/2) * 4;
     nepOrbit.add(neptune);
     nepOrbit.add(nepRing);
 
     const plutoOrbit = new THREE.Group();
+    plutoOrbit.rotation.y = (Math.random()/2) * 4;
     plutoOrbit.add(pluto);
     plutoOrbit.add(plutoRing);
 
