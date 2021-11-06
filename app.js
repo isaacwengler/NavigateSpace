@@ -3,4 +3,4 @@ import { showPlanetView } from '/views/planetView.js'
 import * as slipspace from '/views/slipspace.js'
 import * as solar from '/views/solarsystem.js'
 
-showPlanetView('planet');
+//showPlanetView('planet');
