@@ -56,7 +56,7 @@ export function showPlanetView(planet) {
         renderer.render(scene, camera);
     }
 
-    Array(400).fill().forEach(addStar);
+    //Array(400).fill().forEach(addStar);
     animate();
 }
 

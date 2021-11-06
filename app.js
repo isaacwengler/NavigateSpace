@@ -1,6 +1,9 @@
 //import * as ground from '/views/groundView.js'
 import { showPlanetView } from '/views/planetView.js'
-import * as slipspace from '/views/slipspace.js'
+import { slipspace } from "./views/slipspace.js";
 //import * as solar from '/views/solarsystem.js'
 
-showPlanetView('planet');
+//showPlanetView('planet');
+slipspace();
+
+window.showPlanetView = showPlanetView;
