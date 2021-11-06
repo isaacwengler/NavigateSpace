@@ -1,30 +1,28 @@
 import * as THREE from 'https://cdn.skypack.dev/three';
+import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js';
 
 const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+const controls = new OrbitControls( camera, renderer.domElement);
 
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 
-// const renderer = new THREE.webGLRenderer({
-//     canvas: document.querySelector('#bg')
-// });
+const geometry = new THREE.SphereGeometry(15,15,15);
+const texture = new THREE.TextureLoader().load("./views/sunUV.jpg");
+const material = new THREE.MeshBasicMaterial( {map: texture} );
+const sphere = new THREE.Mesh(geometry,material);
 
-const renderer = new THREE.webGLRenderer();
+scene.add(sphere);
 
-renderer.setPixelRatio( window.devicePixelRatio );
-renderer.setSize( window.innerWidth, window.innerHeight );
-camera.position.setZ(30);
-
-renderer.render(scene,camera);
-
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-const material = new THREE.MeshBasicMaterial( { color: 0xFF6347, wireframe: true} );
-const torus = new THREE.Mesh(geometry,material);
-
-scene.add(torus);
+camera.position.set(10,40,200);
+controls.update();
 
 function animate() {
-    requestAnimationFrame( animate );
-    renderer.render( scene, camera );
+    requestAnimationFrame(animate);
+    controls.update();
+    renderer.render(scene,camera);
 }
 
 animate();
