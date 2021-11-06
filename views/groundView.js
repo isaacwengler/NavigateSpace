@@ -1,7 +1,7 @@
 import * as THREE from 'https://cdn.skypack.dev/three';
 import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js';
     let scene,camera,renderer;
-function init(){  
+export function showGroundView(currentPlanet){  
     scene = new THREE.Scene;
 
     camera = new THREE.PerspectiveCamera(55, window.innerWidth/window.innerHeight, 45, 30000);
@@ -24,7 +24,7 @@ function init(){
     let texture_lf;
     let materialArray = [];
 
-    //need to call in app.js
+    
     function showPlanet(currentPlanet){
         if(currentPlanet=="mercury"){
             texture_bk = new THREE.TextureLoader().load('Images/mercury_bk.jpg');
@@ -35,20 +35,20 @@ function init(){
             texture_lf = new THREE.TextureLoader().load('Images/mercury_lf.jpg');
         }
         else if(currentPlanet=="venus"){
-            texture_bk = new THREE.TextureLoader().load('Images/earth_bk.jpg');
-            texture_ft = new THREE.TextureLoader().load('Images/earth_ft.jpg');
-            texture_up = new THREE.TextureLoader().load('Images/earth_up.jpg');
-            texture_dn = new THREE.TextureLoader().load('Images/earth_dn.jpg');
-            texture_rt = new THREE.TextureLoader().load('Images/earth_rt.jpg');
-            texture_lf = new THREE.TextureLoader().load('Images/earth_lf.jpg');
+            texture_bk = new THREE.TextureLoader().load('Images/venus_bk.jpg');
+            texture_ft = new THREE.TextureLoader().load('Images/venus_ft.jpg');
+            texture_up = new THREE.TextureLoader().load('Images/venus_up.jpg');
+            texture_dn = new THREE.TextureLoader().load('Images/venus_dn.jpg');
+            texture_rt = new THREE.TextureLoader().load('Images/venus_rt.jpg');
+            texture_lf = new THREE.TextureLoader().load('Images/venus_lf.jpg');
         }
         else if(currentPlanet=="earth"){
-            texture_bk = new THREE.TextureLoader().load('Images/earth_bk.jpg');
-            texture_ft = new THREE.TextureLoader().load('Images/earth_ft.jpg');
-            texture_up = new THREE.TextureLoader().load('Images/earth_up.jpg');
-            texture_dn = new THREE.TextureLoader().load('Images/earth_dn.jpg');
-            texture_rt = new THREE.TextureLoader().load('Images/earth_rt.jpg');
-            texture_lf = new THREE.TextureLoader().load('Images/earth_lf.jpg');
+            texture_bk = new THREE.TextureLoader().load('Images/earth2_bk.jpg');
+            texture_ft = new THREE.TextureLoader().load('Images/earth2_ft.jpg');
+            texture_up = new THREE.TextureLoader().load('Images/earth2_up.jpg');
+            texture_dn = new THREE.TextureLoader().load('Images/earth2_dn.jpg');
+            texture_rt = new THREE.TextureLoader().load('Images/earth2_rt.jpg');
+            texture_lf = new THREE.TextureLoader().load('Images/earth2_lf.jpg');
         }
         else if(currentPlanet=="mars"){
             texture_bk = new THREE.TextureLoader().load('Images/mars_bk.jpg');
@@ -59,55 +59,35 @@ function init(){
             texture_lf = new THREE.TextureLoader().load('Images/mars_lf.jpg');
         }
         else if(currentPlanet=="jupiter"){
-            texture_bk = new THREE.TextureLoader().load('Images/earth_bk.jpg');
-            texture_ft = new THREE.TextureLoader().load('Images/earth_ft.jpg');
-            texture_up = new THREE.TextureLoader().load('Images/earth_up.jpg');
-            texture_dn = new THREE.TextureLoader().load('Images/earth_dn.jpg');
-            texture_rt = new THREE.TextureLoader().load('Images/earth_rt.jpg');
-            texture_lf = new THREE.TextureLoader().load('Images/earth_lf.jpg');
+           
         }
         else if(currentPlanet=="saturn"){
-            texture_bk = new THREE.TextureLoader().load('Images/earth_bk.jpg');
-            texture_ft = new THREE.TextureLoader().load('Images/earth_ft.jpg');
-            texture_up = new THREE.TextureLoader().load('Images/earth_up.jpg');
-            texture_dn = new THREE.TextureLoader().load('Images/earth_dn.jpg');
-            texture_rt = new THREE.TextureLoader().load('Images/earth_rt.jpg');
-            texture_lf = new THREE.TextureLoader().load('Images/earth_lf.jpg');
+         
         }
         else if(currentPlanet=="uranus"){
-            texture_bk = new THREE.TextureLoader().load('Images/earth_bk.jpg');
-            texture_ft = new THREE.TextureLoader().load('Images/earth_ft.jpg');
-            texture_up = new THREE.TextureLoader().load('Images/earth_up.jpg');
-            texture_dn = new THREE.TextureLoader().load('Images/earth_dn.jpg');
-            texture_rt = new THREE.TextureLoader().load('Images/earth_rt.jpg');
-            texture_lf = new THREE.TextureLoader().load('Images/earth_lf.jpg');
+            
         }
         else if(currentPlanet=="neptune"){
-            texture_bk = new THREE.TextureLoader().load('Images/earth_bk.jpg');
-            texture_ft = new THREE.TextureLoader().load('Images/earth_ft.jpg');
-            texture_up = new THREE.TextureLoader().load('Images/earth_up.jpg');
-            texture_dn = new THREE.TextureLoader().load('Images/earth_dn.jpg');
-            texture_rt = new THREE.TextureLoader().load('Images/earth_rt.jpg');
-            texture_lf = new THREE.TextureLoader().load('Images/earth_lf.jpg');
+            
         }
         else if(currentPlanet=="pluto"){
-            texture_bk = new THREE.TextureLoader().load('Images/earth_bk.jpg');
-            texture_ft = new THREE.TextureLoader().load('Images/earth_ft.jpg');
-            texture_up = new THREE.TextureLoader().load('Images/earth_up.jpg');
-            texture_dn = new THREE.TextureLoader().load('Images/earth_dn.jpg');
-            texture_rt = new THREE.TextureLoader().load('Images/earth_rt.jpg');
-            texture_lf = new THREE.TextureLoader().load('Images/earth_lf.jpg');
+            texture_bk = new THREE.TextureLoader().load('Images/pluto_bk.jpg');
+            texture_ft = new THREE.TextureLoader().load('Images/pluto_ft.jpg');
+            texture_up = new THREE.TextureLoader().load('Images/pluto_up.jpg');
+            texture_dn = new THREE.TextureLoader().load('Images/pluto_dn.jpg');
+            texture_rt = new THREE.TextureLoader().load('Images/pluto_rt.jpg');
+            texture_lf = new THREE.TextureLoader().load('Images/pluto_lf.jpg');
+        }
+        else if(currentPlanet =="moon"){
+            texture_bk = new THREE.TextureLoader().load('Images/moon_bk.jpg');
+            texture_ft = new THREE.TextureLoader().load('Images/moon_ft.jpg');
+            texture_up = new THREE.TextureLoader().load('Images/moon_up.jpg');
+            texture_dn = new THREE.TextureLoader().load('Images/moon_dn.jpg');
+            texture_rt = new THREE.TextureLoader().load('Images/moon_rt.jpg');
+            texture_lf = new THREE.TextureLoader().load('Images/moon_lf.jpg');
         }
     }
-
-    
-     texture_bk = new THREE.TextureLoader().load('Images/earth_bk.jpg');
-     texture_ft = new THREE.TextureLoader().load('Images/earth_ft.jpg');
-     texture_up = new THREE.TextureLoader().load('Images/earth_up.jpg');
-     texture_dn = new THREE.TextureLoader().load('Images/earth_dn.jpg');
-     texture_rt = new THREE.TextureLoader().load('Images/earth_rt.jpg');
-     texture_lf = new THREE.TextureLoader().load('Images/earth_lf.jpg');
-   
+    showPlanet(currentPlanet);
 
     materialArray.push(new THREE.MeshBasicMaterial({map: texture_ft}));
     materialArray.push(new THREE.MeshBasicMaterial({map: texture_bk}));
@@ -130,4 +110,4 @@ function animate(){
     renderer.render(scene,camera);
     requestAnimationFrame(animate);
 }
-init();
+
