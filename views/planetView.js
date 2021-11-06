@@ -1,7 +1,28 @@
 import * as THREE from 'https://cdn.skypack.dev/three';
 import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js';
 
+class Planet {
+    constructor(url, size) {
+        this.url = url;
+        this.size = size;
+    }
+}
+
+const planetImages = {
+    'earth': new Planet('./Images/earthUV.jpeg', 3),
+    'mercury': new Planet('/Images/2k_mercury.jpg', 1.14),
+    'venus': new Planet('Images/2k_venus_surface.jpg', 2.85),
+    'moon': new Planet('Images/2k_moon.jpg', 0.81),
+    'mars': new Planet('Images/2k_mars.jpg', 1.56),
+    'jupiter': new Planet('Images/2k_jupiter.jpg', 6),
+    'saturn': new Planet('Images/2k_saturn.jpg', 5.5),
+    'neptune': new Planet('Images/2k_neptune.jpg', 4.5),
+    'uranus': new Planet('Images/2k_uranus.jpg', 4.3),
+    'sun': new Planet('Images/sunUV.jpg', 7),
+};
+
 export function showPlanetView(planet) {
+    const currentPlanet = planetImages[planet];
     const scene = new THREE.Scene();
     const camera = new THREE.
         PerspectiveCamera(
@@ -23,10 +44,10 @@ export function showPlanetView(planet) {
 
     // sphere
     const sphere = new THREE
-        .Mesh(new THREE.SphereGeometry(3, 50, 50),
+        .Mesh(new THREE.SphereGeometry(currentPlanet.size, 50, 50),
         new THREE.MeshBasicMaterial({
             //color: 0xFF0000
-            map: new THREE.TextureLoader().load('./Images/earthUV.jpeg')
+            map: new THREE.TextureLoader().load(currentPlanet.url)
         })
     );
 
@@ -46,18 +67,20 @@ export function showPlanetView(planet) {
         scene.add(star);
     }
 
-    // const background = new THREE.TextureLoader().load('./views/assets/background.png');
-    // scene.background = background;
+    const background = new THREE.TextureLoader().load('Images/isaacbackground.png');
+    scene.background = background;
 
     function animate() {
         requestAnimationFrame(animate);
-        sphere.rotation.y += .005;
+        if (planet !== 'sun') {
+            sphere.rotation.y += .005;
+        }
         controls.update();
         renderer.render(scene, camera);
     }
 
-    //Array(400).fill().forEach(addStar);
-    animate();
+    Array(200).fill().forEach(addStar);
+    animate(currentPlanet.size !== 7);
 }
 
 

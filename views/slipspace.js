@@ -37,8 +37,8 @@ export function slipspace() {
 
   stars = new THREE.Points(starGeo, starMaterial);
   scene.add(stars);
-//   const background = new THREE.TextureLoader().load('./Images/background.png');
-//   scene.background = background;
+  const background = new THREE.TextureLoader().load('Images/isaacbackground.png');
+  scene.background = background;
   animate();
 }
 
