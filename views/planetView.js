@@ -46,7 +46,10 @@ export function showPlanetView(planet, isFromPlanet) {
     );
     renderer.setSize(innerWidth, innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
-    document.body.innerHTML = ""
+    const canvas = document.querySelector('canvas');
+    if (canvas) {
+        canvas.parentNode.removeChild(canvas);
+    }
     document.body.appendChild(renderer.domElement);
 
     // sphere

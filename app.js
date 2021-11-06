@@ -5,6 +5,18 @@ import { slipspace } from "./views/slipspace.js";
 
 //showPlanetView('pluto');
 //slipspace();
+
+function buttonAction(buttonSelected) {
+    let oldButton = document.getElementsByClassName("btn");
+      Array.prototype.forEach.call(oldButton, function(el) {
+        el.setAttribute("class", "btn btn-outline-light");
+      });
+     
+     let button = document.getElementById(buttonSelected);
+     button.setAttribute("class", "btn btn-light");
+
+}
+
 let currentPlanet = 'earth';
 
 window.onload = showPlanetView(currentPlanet, true);
