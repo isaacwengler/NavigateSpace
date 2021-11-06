@@ -5,10 +5,11 @@ import {
   goToPlanet,
 } from "./views/planetView.js";
 import { slipspace } from "./views/slipspace.js";
-//import * as solar from '/views/solarsystem.js'
+import { solarView } from '/views/solarsystem.js'
 
-//showPlanetView('pluto');
-//slipspace();
+// showPlanetView('pluto');
+// slipspace();
+// solarView();
 
 function buttonAction(buttonSelected) {
   let oldButton = document.getElementsByClassName("btn");
@@ -33,9 +34,7 @@ const changePlanet = (planet) => {
   for (let i = 0; i < 40; i++) {
     setTimeout(() => changeCamera(), 20 * i);
   }
-  setTimeout(() => {
-    slipspace()
-  }, 800);
+  setTimeout(() => slipspace(), 800);
   console.log(planet);
   setTimeout(() => {
     showPlanetView(planet, false);
