@@ -4,5 +4,5 @@ import { slipspace } from "./views/slipspace.js";
 //import * as solar from '/views/solarsystem.js'
 
 //showPlanetView('planet');
-showGroundView('earth');
+slipspace();
 

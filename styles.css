@@ -1,20 +1,47 @@
-/** @format */
+
+
 body {
     margin: 0;
     background-color: black;
-}
+  }
 
-#planetControls {
+  #planetControls {
     border: 2px solid white;
     width: 190px;
-    height: 300px;
+    height: 400px;
     text-align: center;
     border-radius: 15%;
-    margin-top: 10px;
     margin-left: 10px;
     padding-top: 5px;
-}
+    position: absolute;
+    
+  }
+  #planetName {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: white;
+    font-size: 25px;
+  }
+  #planets {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+  }
+  #currentplanet{
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+  }
+  .btn{
+      margin-bottom:25px;
 
-#planets {
-    padding-top: 100px;
-}
+  }
+  #topButton{
+      margin-top: 7px ;
+  }
+  .btn.selected{
+      border: 2px solid grey !important;
+      border-radius: 4px;
+    background-color: grey !important;
+  }
