@@ -9,8 +9,13 @@ const camera = new THREE.
         1000
     );
 
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer(
+    {
+        antialias: true
+    }
+);
 renderer.setSize(innerWidth, innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
 document.body.innerHTML = ""
 document.body.appendChild(renderer.domElement);
 
@@ -18,8 +23,16 @@ document.body.appendChild(renderer.domElement);
 const sphere = new THREE
     .Mesh(new THREE.SphereGeometry(5, 50, 50),
     new THREE.MeshBasicMaterial({
-        color: 0xFF0000
-    }))
+        //color: 0xFF0000
+        map: new THREE.TextureLoader().load('./views/assets/earthUV.jpeg')
+    })
+);
+
+
+scene.add(sphere);
+
+camera.position.z = 15;
+
 
 function animate() {
     requestAnimationFrame(animate);
