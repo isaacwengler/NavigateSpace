@@ -19,12 +19,19 @@ const planetImages = {
     'neptune': new Planet('Images/2k_neptune.jpg', 4.5),
     'uranus': new Planet('Images/2k_uranus.jpg', 4.3),
     'sun': new Planet('Images/sunUV.jpg', 7),
+    'pluto': new Planet('Images/plutomap1k.jpg', .5),
 };
 
+let camera;
+let controls;
+let currentPlanet;
+
 export function showPlanetView(planet) {
-    const currentPlanet = planetImages[planet];
+    currentPlanet = planetImages[planet];
     const scene = new THREE.Scene();
-    const camera = new THREE.
+    const background = new THREE.TextureLoader().load('Images/isaacbackground.png');
+    scene.background = background;
+    camera = new THREE.
         PerspectiveCamera(
             75,
             innerWidth / innerHeight,
@@ -54,7 +61,7 @@ export function showPlanetView(planet) {
 
     scene.add(sphere);
     camera.position.z = 15;
-    const controls = new OrbitControls(camera, renderer.domElement);
+    controls = new OrbitControls(camera, renderer.domElement);
 
     function addStar() {
         const geometry = new THREE.SphereGeometry(0.1, 24, 24);
@@ -67,20 +74,41 @@ export function showPlanetView(planet) {
         scene.add(star);
     }
 
-    const background = new THREE.TextureLoader().load('Images/isaacbackground.png');
-    scene.background = background;
+    var angle = 0;
+    var radius = 1; 
+
 
     function animate() {
         requestAnimationFrame(animate);
         if (planet !== 'sun') {
             sphere.rotation.y += .005;
         }
+        
+        camera.rotation.y += 1;
         controls.update();
         renderer.render(scene, camera);
+        
+        
     }
 
     Array(200).fill().forEach(addStar);
     animate(currentPlanet.size !== 7);
 }
 
+var angle = 0;
+var radius = 4; 
+export function changeCamera() {
+    // camera.position.x = radius * Math.cos( angle );  
+    // camera.position.z = radius * Math.sin( angle );
+    // camera.position.z = radius * Math.sin( angle );
+    controls.target.set(angle,angle,angle);
 
+    angle += 1;
+}
+
+
+export function goToPlanet() {
+    camera.position.x = Math.min(Math.abs(camera.position.x + (15 - currentPlanet.size) / 30),Math.abs(camera.position.x -(15 - currentPlanet.size) / 30))
+    camera.position.y = Math.min(Math.abs(camera.position.y + (15 - currentPlanet.size) / 30),Math.abs(camera.position.y -(15 - currentPlanet.size) / 30))
+    camera.position.z = Math.min(Math.abs(camera.position.z + (15 - currentPlanet.size) / 30),Math.abs(camera.position.z -(15 - currentPlanet.size) / 30))
+}
