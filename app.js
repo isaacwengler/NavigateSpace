@@ -5,7 +5,7 @@ import {
   goToPlanet,
 } from "./views/planetView.js";
 import { slipspace } from "./views/slipspace.js";
-import { solarView, goToPlanet2 } from '/views/solarsystem.js'
+import { solarView, goToPlanet2 } from "./views/solarsystem.js";
 
 // showPlanetView('pluto');
 // slipspace();
@@ -24,7 +24,7 @@ function buttonAction(buttonSelected) {
 let currentPlanet = "solar";
 let lastPlanet = "";
 let animating = false;
-const allowedPlanets = ['earth', 'mercury', 'venus', 'mars', 'moon', 'pluto'];
+const allowedPlanets = ["earth", "mercury", "venus", "mars", "moon", "pluto"];
 
 window.onload = solarView();
 
@@ -35,15 +35,21 @@ const changePlanet = (planet) => {
   animating = true;
   for (let i = 0; i < 40; i++) {
     setTimeout(() => {
-      if (lastPlanet == 'solar') {
+      if (lastPlanet == "solar") {
         goToPlanet2();
       } else {
         changeCamera();
       }
-     }, 20 * i);
+    }, 20 * i);
   }
-  setTimeout(() => slipspace(), 800);
   setTimeout(() => {
+    const menu = document.getElementById("planetControls");
+    menu.hidden = true;
+    slipspace();
+  }, 800);
+  setTimeout(() => {
+    const menu = document.getElementById("planetControls");
+    menu.hidden = false;
     showPlanetView(planet, false);
     animating = false;
   }, 5000);
@@ -51,21 +57,21 @@ const changePlanet = (planet) => {
 window.changePlanet = changePlanet;
 
 const visitPlanet = () => {
-    if (!allowedPlanets.includes(currentPlanet)) {
-        // error
-        return;
-    }
-    const menu = document.getElementById('planetControls');
-    menu.hidden = true;
-    for (let i = 0; i < 20; i++) {
-        setTimeout(() => goToPlanet(), 40 * i);
-    };
-    setTimeout(() => {
-        const menu2 = document.getElementById('planetControls2');
-        menu2.hidden = false;
-        showGroundView(currentPlanet);
-    }, 800);
-}
+  if (!allowedPlanets.includes(currentPlanet)) {
+    // error
+    return;
+  }
+  const menu = document.getElementById("planetControls");
+  menu.hidden = true;
+  for (let i = 0; i < 20; i++) {
+    setTimeout(() => goToPlanet(), 40 * i);
+  }
+  setTimeout(() => {
+    const menu2 = document.getElementById("planetControls2");
+    menu2.hidden = false;
+    showGroundView(currentPlanet);
+  }, 800);
+};
 window.visitPlanet = visitPlanet;
 
 const backToOrbit = () => {
@@ -78,8 +84,8 @@ const backToOrbit = () => {
 window.backToOrbit = backToOrbit;
 
 const changeToSolar = () => {
-  if (currentPlanet === 'solar' || animating) return;
-  currentPlanet = 'solar';
+  if (currentPlanet === "solar" || animating) return;
+  currentPlanet = "solar";
   animating = true;
   for (let i = 0; i < 40; i++) {
     setTimeout(() => changeCamera(), 20 * i);
@@ -89,5 +95,5 @@ const changeToSolar = () => {
     solarView();
     animating = false;
   }, 5000);
-}
+};
 window.changeToSolar = changeToSolar;
