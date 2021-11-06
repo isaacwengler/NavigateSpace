@@ -33,7 +33,9 @@ const changePlanet = (planet) => {
   for (let i = 0; i < 40; i++) {
     setTimeout(() => changeCamera(), 20 * i);
   }
-  setTimeout(() => slipspace(), 800);
+  setTimeout(() => {
+    slipspace()
+  }, 800);
   console.log(planet);
   setTimeout(() => {
     showPlanetView(planet, false);

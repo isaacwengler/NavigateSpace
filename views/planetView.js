@@ -65,8 +65,6 @@ export function showPlanetView(planet, isFromPlanet) {
     scene.add(sphere);
     camera.position.z = isFromPlanet ? 15 : 100;
     controls = new OrbitControls(camera, renderer.domElement);
-    controls.minDistance = 12;
-    controls.maxDistance = 18;
 
     function addStar() {
         const geometry = new THREE.SphereGeometry(0.1, 24, 24);
@@ -111,9 +109,29 @@ export function changeCamera() {
     angle += 1;
 }
 
+let x = null;
+let y = null;
+let z = null;
+function slightZoom(posVal) {
+    if (posVal > 0) {
+        return (posVal - currentPlanet.size) / 30;
+    } else {
+        return (posVal + currentPlanet.size) / 30;
+    }
+}
 
 export function goToPlanet() {
-    camera.position.x = Math.min(Math.abs(camera.position.x + (15 - currentPlanet.size) / 30),Math.abs(camera.position.x -(15 - currentPlanet.size) / 30))
-    camera.position.y = Math.min(Math.abs(camera.position.y + (15 - currentPlanet.size) / 30),Math.abs(camera.position.y -(15 - currentPlanet.size) / 30))
-    camera.position.z = Math.min(Math.abs(camera.position.z + (15 - currentPlanet.size) / 30),Math.abs(camera.position.z -(15 - currentPlanet.size) / 30))
+    if (Math.abs(camera.position.x))
+    if (x === null) {
+        x = slightZoom(camera.position.x);
+    }
+    if (y === null) {
+        y = slightZoom(camera.position.y);
+    }
+    if (z === null) {
+        z = slightZoom(camera.position.z);
+    }
+    camera.position.x -= x;
+    camera.position.y -= y;
+    camera.position.z -= z;
 }
