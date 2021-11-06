@@ -1,10 +1,10 @@
+/** @format */
+
 body {
     margin: 0;
-    background-color: black;
-    background-image: url("Images/spaceShipWindow.png") !important;
-    z-index: 100 !important;
-  }
-
+    background-image: url(Images/isaacbackground.png);
+    
+}
   #planetControls {
     border: 2px solid white;
     width: 190px;
@@ -14,33 +14,32 @@ body {
     margin-left: 10px;
     padding-top: 5px;
     position: absolute;
-    
-  }
-  #planetName {
-    font-family: 'Montserrat', sans-serif;
+}
+#planetName {
+    font-family: "Montserrat", sans-serif;
     font-weight: bold;
     color: white;
     font-size: 25px;
-  }
-  #planets {
+}
+#planets {
     color: white;
-    font-family: 'Montserrat', sans-serif;
-  }
-  #currentplanet{
-      color: white;
-      font-family: 'Montserrat', sans-serif;
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-  }
-  .btn{
-      margin-bottom:25px;
-  }
-  #topButton{
-      margin-top: 7px ;
-  }
-  .btn.selected{
-      border: 2px solid grey !important;
-      border-radius: 4px;
+    font-family: "Montserrat", sans-serif;
+}
+#currentplanet {
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.btn {
+    margin-bottom: 25px;
+}
+#topButton {
+    margin-top: 7px;
+}
+.btn.selected {
+    border: 2px solid grey !important;
+    border-radius: 4px;
     background-color: grey !important;
-  }
+}

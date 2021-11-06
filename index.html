@@ -14,11 +14,12 @@
     <title>Explore Space</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-<body">
+<body onclick="changePlanet('mercury')">
     
 </body>
 <script type="module" src="app.js"></script>
 <html lang="en">  
+ 
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -39,12 +40,15 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <title>Explore Space</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
   </head>
   <body>
+    
     <div id="planetControls">
       <h6 id="currentplanet">
         Planet Selector:
@@ -63,18 +67,7 @@
           <button id="SolarSystem" type="button" class=" btn btn-outline-light " onclick="buttonAction('SolarSystem')">Solar System</button>
           </div>
     </div>
-    <script>
-      function buttonAction(buttonSelected) {
-      let oldButton = document.getElementsByClassName("btn");
-        Array.prototype.forEach.call(oldButton, function(el) {
-          el.setAttribute("class", "btn btn-outline-light");
-        });
-       
-       let button = document.getElementById(buttonSelected);
-       button.setAttribute("class", "btn btn-light");
-
-      }
-    </script>
+    
 <!-- bootstrap script -->
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
