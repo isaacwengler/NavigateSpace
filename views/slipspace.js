@@ -1,4 +1,5 @@
-import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
+import * as THREE from "https://cdn.skypack.dev/three";
+// import * as THREE from "https://threejs.org/build/three.js";
 
 let scene, camera, renderer, starGeo, stars;
 
