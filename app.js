@@ -19,6 +19,8 @@ function buttonAction(buttonSelected) {
 
 let currentPlanet = 'earth';
 let animating = false;
+const allowedPlanets = ['earth', 'mercury', 'venus', 'mars', 'moon', 'pluto'];
+
 window.onload = showPlanetView(currentPlanet, true);
 
 const changePlanet = (planet) => {
@@ -39,6 +41,10 @@ const changePlanet = (planet) => {
 window.changePlanet = changePlanet;
 
 const visitPlanet = () => {
+    if (!allowedPlanets.contains(currentPlanet)) {
+        // error
+        return;
+    }
     const menu = document.getElementById('planetControls');
     menu.hidden = true;
     for (let i = 0; i < 20; i++) {
