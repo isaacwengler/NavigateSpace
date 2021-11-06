@@ -17,30 +17,49 @@ function buttonAction(buttonSelected) {
 
 }
 
-let currentPlanet = 'earth';
 
+let currentPlanet = 'earth';
+let animating = false;
 window.onload = showPlanetView(currentPlanet, true);
 
 
 const changePlanet = (planet) => {
+    if (currentPlanet === planet || animating) return;
+    currentPlanet = planet;
+    animating = true;
     for (let i = 0; i < 40; i++) {
         setTimeout(() => changeCamera(), 20 * i);
     }
     setTimeout(() => slipspace(), 800);
-    setTimeout(() => showPlanetView(planet, false), 5000);
+    console.log(planet)
+    setTimeout(() => {
+        showPlanetView(planet, false);
+        animating = false;
+    }, 5000);
+    
 }
 window.changePlanet = changePlanet;
 
 const visitPlanet = () => {
+    const menu = document.getElementById('planetControls');
+    menu.hidden = true;
     for (let i = 0; i < 20; i++) {
         setTimeout(() => goToPlanet(), 40 * i);
     };
-    setTimeout(() => showGroundView(currentPlanet), 800);
+    setTimeout(() => {
+        const menu2 = document.getElementById('planetControls2');
+        menu2.hidden = false;
+        showGroundView(currentPlanet);
+    }, 800);
 }
 window.visitPlanet = visitPlanet;
 
 const backToOrbit = () => {
-    showPlanetView(currentPlanet);
+    const menu = document.getElementById('planetControls');
+    menu.hidden = false;
+    const menu2 = document.getElementById('planetControls2');
+    menu2.hidden = true;
+    showPlanetView(currentPlanet, true);
 }
 window.backToOrbit = backToOrbit;
 

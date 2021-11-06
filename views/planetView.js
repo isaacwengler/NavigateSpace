@@ -83,7 +83,6 @@ export function showPlanetView(planet, isFromPlanet) {
             sphere.rotation.y += .005;
         }
         
-        camera.rotation.y += 1;
         controls.update();
         renderer.render(scene, camera);
         

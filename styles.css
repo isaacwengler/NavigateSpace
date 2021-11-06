@@ -8,13 +8,27 @@ body {
 #planetControls {
     border: 2px solid white;
     width: 190px;
-    height: 400px;
+    height: 410px;
     text-align: center;
-    border-radius: 15%;
+    border-radius: 15px;
     margin-left: 10px;
+    margin-top: 10px;
     padding-top: 5px;
     position: absolute;
 }
+#planetControls2 {
+    background-color: black;
+    border: 2px solid white;
+    width: 190px;
+    height: 50px;
+    text-align: center;
+    border-radius: 15px;
+    margin-left: 10px;
+    margin-top: 10px;
+    padding-top: 5px;
+    position: absolute;
+}
+
 #planetName {
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
@@ -28,18 +42,23 @@ body {
 #currentplanet {
     color: white;
     font-family: "Montserrat", sans-serif;
-    margin-top: 20px;
     font-size: 18px;
     font-weight: bold;
+    padding-bottom: 10px;
 }
 .btn {
-    margin-bottom: 25px;
+    margin-bottom: 10px;
 }
 #topButton {
-    margin-top: 7px;
+    margin-top: 10px;
 }
 .btn.selected {
     border: 2px solid grey !important;
     border-radius: 4px;
     background-color: grey !important;
+}
+
+.top {
+    top: 15px;
+    font-size: 16px;
 }
