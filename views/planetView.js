@@ -65,6 +65,8 @@ export function showPlanetView(planet, isFromPlanet) {
     scene.add(sphere);
     camera.position.z = isFromPlanet ? 15 : 100;
     controls = new OrbitControls(camera, renderer.domElement);
+    controls.minDistance = 12;
+    controls.maxDistance = 18;
 
     function addStar() {
         const geometry = new THREE.SphereGeometry(0.1, 24, 24);
