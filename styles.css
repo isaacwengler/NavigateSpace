@@ -1,20 +1,27 @@
 /** @format */
 body {
-    margin: 0;
-    background-color: black;
+  margin: 0;
+  background-color: black;
+}
+
+#visitPlanetButton {
+  position: absolute;
 }
 
 #planetControls {
-    border: 2px solid white;
-    width: 190px;
-    height: 300px;
-    text-align: center;
-    border-radius: 15%;
-    margin-top: 10px;
-    margin-left: 10px;
-    padding-top: 5px;
+  border: 2px solid white;
+  width: 190px;
+  height: 300px;
+  text-align: center;
+  border-radius: 15%;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding-top: 5px;
+}
+#planetName {
+  padding-top: 10px;
 }
 
 #planets {
-    padding-top: 100px;
+  padding-top: 10px;
 }
