@@ -11,12 +11,19 @@ const controls = new OrbitControls( camera, renderer.domElement);
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-const geometry = new THREE.SphereGeometry(15,15,15);
-const texture = new THREE.TextureLoader().load("./Images/sunUV.jpg");
-const material = new THREE.MeshBasicMaterial( {map: texture} );
-const sphere = new THREE.Mesh(geometry,material);
+//spheres
+const sunSphere = new THREE.SphereGeometry(15,15,15);
+const sunTexture = new THREE.TextureLoader().load("./Images/sunUV.jpg");
+const sunMaterial = new THREE.MeshBasicMaterial( {map: sunTexture} );
+const sun = new THREE.Mesh(sunSphere,sunMaterial);
 
-scene.add(sphere);
+const mercShpere = new THREE.SphereGeometry(15,15,15);
+mercShpere.translate(35,0,0)
+const mercTexture = new THREE.TextureLoader().load("./Images/mercuryUV.jpg")
+const mercMaterial = new THREE.MeshBasicMaterial({map: mercTexture})
+const mercury = new THREE.Mesh(mercShpere,mercMaterial);
+
+scene.add(sun,mercury);
 
 camera.position.set(10,40,200);
 controls.update();
