@@ -22,6 +22,8 @@ function buttonAction(buttonSelected) {
 
 let currentPlanet = "earth";
 let animating = false;
+const allowedPlanets = ["earth", "mercury", "venus", "mars", "moon", "pluto"];
+
 window.onload = showPlanetView(currentPlanet, true);
 
 const changePlanet = (planet) => {
@@ -31,9 +33,15 @@ const changePlanet = (planet) => {
   for (let i = 0; i < 40; i++) {
     setTimeout(() => changeCamera(), 20 * i);
   }
-  setTimeout(() => slipspace(), 800);
+  setTimeout(() => {
+    const menu = document.getElementById("planetControls");
+    menu.hidden = true;
+    slipspace();
+  }, 800);
   console.log(planet);
   setTimeout(() => {
+    const menu = document.getElementById("planetControls");
+    menu.hidden = false;
     showPlanetView(planet, false);
     animating = false;
   }, 5000);
@@ -41,6 +49,10 @@ const changePlanet = (planet) => {
 window.changePlanet = changePlanet;
 
 const visitPlanet = () => {
+  if (!allowedPlanets.includes(currentPlanet)) {
+    // error
+    return;
+  }
   const menu = document.getElementById("planetControls");
   menu.hidden = true;
   for (let i = 0; i < 20; i++) {
