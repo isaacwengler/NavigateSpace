@@ -28,7 +28,7 @@ export function slipspace() {
     star.acceleration = 0.1;
     starGeo.vertices.push(star);
   }
-  let sprite = new THREE.TextureLoader().load("./views/star.png");
+  let sprite = new THREE.TextureLoader().load("./Images/star.png");
   let starMaterial = new THREE.PointsMaterial({
     color: 0xaaaaaa,
     size: 0.5,
@@ -37,6 +37,8 @@ export function slipspace() {
 
   stars = new THREE.Points(starGeo, starMaterial);
   scene.add(stars);
+//   const background = new THREE.TextureLoader().load('./Images/background.png');
+//   scene.background = background;
   animate();
 }
 

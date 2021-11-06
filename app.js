@@ -6,4 +6,3 @@ import { slipspace } from "./views/slipspace.js";
 //showPlanetView('planet');
 slipspace();
 
-window.showPlanetView = showPlanetView;
