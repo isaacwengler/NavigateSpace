@@ -5,6 +5,8 @@ export function solarView(){
 
     const date = Date.now() * 0.0001;
     const scene = new THREE.Scene();
+    const background = new THREE.TextureLoader().load("./Images/isaacbackground.png");
+    scene.background = background;
     const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 2000);
     const renderer = new THREE.WebGLRenderer({
         antialias: true
