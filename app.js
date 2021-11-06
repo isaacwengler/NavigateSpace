@@ -5,7 +5,7 @@ import {
   goToPlanet,
 } from "./views/planetView.js";
 import { slipspace } from "./views/slipspace.js";
-//import * as solar from '/views/solarsystem.js'
+import {solar} from '/views/solarsystem.js'
 
 //showPlanetView('pluto');
 //slipspace();
