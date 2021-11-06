@@ -43,7 +43,7 @@ const changePlanet = (planet) => {
 window.changePlanet = changePlanet;
 
 const visitPlanet = () => {
-    if (!allowedPlanets.contains(currentPlanet)) {
+    if (!allowedPlanets.includes(currentPlanet)) {
         // error
         return;
     }
