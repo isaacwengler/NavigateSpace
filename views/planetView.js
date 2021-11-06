@@ -26,7 +26,7 @@ export function showPlanetView(planet) {
         .Mesh(new THREE.SphereGeometry(3, 50, 50),
         new THREE.MeshBasicMaterial({
             //color: 0xFF0000
-            map: new THREE.TextureLoader().load('./views/assets/earthUV.jpeg')
+            map: new THREE.TextureLoader().load('./Images/earthUV.jpeg')
         })
     );
 
