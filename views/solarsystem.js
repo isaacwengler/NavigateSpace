@@ -9,6 +9,7 @@ const renderer = new THREE.WebGLRenderer({
 const controls = new OrbitControls( camera, renderer.domElement);
 
 renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.innerHTML = ""
 document.body.appendChild(renderer.domElement);
 
 //spheres

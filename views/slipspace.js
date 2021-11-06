@@ -4,6 +4,9 @@ let scene, camera, renderer, starGeo, star, stars;
 
 export function slipspace() {
   scene = new THREE.Scene();
+  const background = new THREE.TextureLoader().load('Images/isaacbackground.png');
+  scene.background = background;
+
   camera = new THREE.PerspectiveCamera(
     60,
     window.innerWidth / window.innerHeight,
@@ -15,6 +18,10 @@ export function slipspace() {
 
   renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
+  const canvas = document.querySelector('canvas');
+    if (canvas) {
+        canvas.parentNode.removeChild(canvas);
+    }
   document.body.appendChild(renderer.domElement);
 
   starGeo = new THREE.Geometry();
@@ -24,8 +31,8 @@ export function slipspace() {
       Math.random() * 600 - 300,
       Math.random() * 600 - 300
     );
-    star.velocity = 2;
-    star.acceleration = 0.1;
+    star.velocity = 6;
+    star.acceleration = 0.6;
     starGeo.vertices.push(star);
   }
   let sprite = new THREE.TextureLoader().load("./Images/star.png");
@@ -37,8 +44,6 @@ export function slipspace() {
 
   stars = new THREE.Points(starGeo, starMaterial);
   scene.add(stars);
-//   const background = new THREE.TextureLoader().load('./Images/background.png');
-//   scene.background = background;
   animate();
 }
 
@@ -57,3 +62,4 @@ function animate() {
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
 }
+
