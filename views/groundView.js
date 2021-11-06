@@ -9,6 +9,7 @@ export function showGroundView(currentPlanet){
 
     renderer = new THREE.WebGLRenderer({antialias:true});
     renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.innerHTML = "";
     document.body.appendChild(renderer.domElement);
 
     let controls = new OrbitControls(camera, renderer.domElement);
