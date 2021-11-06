@@ -26,7 +26,7 @@ let camera;
 let controls;
 let currentPlanet;
 
-export function showPlanetView(planet) {
+export function showPlanetView(planet, isFromPlanet) {
     currentPlanet = planetImages[planet];
     const scene = new THREE.Scene();
     const background = new THREE.TextureLoader().load('Images/isaacbackground.png');
@@ -60,7 +60,7 @@ export function showPlanetView(planet) {
 
 
     scene.add(sphere);
-    camera.position.z = 15;
+    camera.position.z = isFromPlanet ? 15 : 100;
     controls = new OrbitControls(camera, renderer.domElement);
 
     function addStar() {
@@ -73,10 +73,6 @@ export function showPlanetView(planet) {
         star.position.set(x, y, z);
         scene.add(star);
     }
-
-    var angle = 0;
-    var radius = 1; 
-
 
     function animate() {
         requestAnimationFrame(animate);
@@ -92,11 +88,16 @@ export function showPlanetView(planet) {
     }
 
     Array(200).fill().forEach(addStar);
-    animate(currentPlanet.size !== 7);
+    if (!isFromPlanet) {
+        for (let i = 0; i < 175; i++) {
+            setTimeout(() => camera.position.z -= .5, 5 * i + i);
+        }
+    }
+    animate();
 }
 
 var angle = 0;
-var radius = 4; 
+
 export function changeCamera() {
     // camera.position.x = radius * Math.cos( angle );  
     // camera.position.z = radius * Math.sin( angle );

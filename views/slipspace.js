@@ -60,29 +60,3 @@ function animate() {
   requestAnimationFrame(animate);
 }
 
-let sphere;
-export function arrive() {
-    sphereMap = new THREE.Vector3(
-        Math.random() * 600 - 300,
-        Math.random() * 600 - 300,
-        Math.random() * 600 - 300
-      );
-      star.velocity = 1;
-      star.acceleration = 0.1;
-      starGeo.vertices.push(star);
-    sphere = new THREE
-        .Mesh(new THREE.SphereGeometry(currentPlanet.size, 50, 50),
-        new THREE.MeshBasicMaterial({
-            color: 0xFF0000,
-            size: 5,
-            map: sphereMap
-        })
-    );
-    starGeo.vertices.push(sphere);
-
-    
-}
-
-export function incSphere() {
-    sphere.size++;
-}

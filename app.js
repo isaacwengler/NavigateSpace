@@ -1,13 +1,13 @@
 import { showGroundView } from '/views/groundView.js'
 import { showPlanetView, changeCamera, goToPlanet } from '/views/planetView.js'
-import { slipspace, arrive, incSphere } from "./views/slipspace.js";
+import { slipspace } from "./views/slipspace.js";
 //import * as solar from '/views/solarsystem.js'
 
 //showPlanetView('pluto');
 //slipspace();
 let currentPlanet = 'earth';
 
-window.onload = showPlanetView(currentPlanet);
+window.onload = showPlanetView(currentPlanet, true);
 
 
 const changePlanet = (planet) => {
@@ -15,8 +15,7 @@ const changePlanet = (planet) => {
         setTimeout(() => changeCamera(), 20 * i);
     }
     setTimeout(() => slipspace(), 800);
-    setTimeout(() => arrive(), 4800);
-    setTimeout(() => showPlanetView(planet), 5000);
+    setTimeout(() => showPlanetView(planet, false), 5000);
 }
 window.changePlanet = changePlanet;
 
