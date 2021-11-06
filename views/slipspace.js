@@ -2,7 +2,7 @@ import * as THREE from "https://cdn.skypack.dev/three@0.124";
 
 let scene, camera, renderer, starGeo, star, stars;
 
-function init() {
+export function slipspace() {
   scene = new THREE.Scene();
   camera = new THREE.PerspectiveCamera(
     60,
@@ -24,7 +24,7 @@ function init() {
       Math.random() * 600 - 300,
       Math.random() * 600 - 300
     );
-    star.velocity = 0;
+    star.velocity = 2;
     star.acceleration = 0.02;
     starGeo.vertices.push(star);
   }
@@ -51,7 +51,8 @@ function animate() {
   });
   starGeo.verticesNeedUpdate = true;
   stars.rotation.y += 0.002;
+
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
 }
-init();
+// slipspace();
