@@ -1,5 +1,5 @@
-import { showGroundView } from '/views/groundView.js'
-import { showPlanetView, changeCamera, goToPlanet } from '/views/planetView.js'
+import { showGroundView } from "/views/groundView.js";
+import { showPlanetView, changeCamera, goToPlanet } from "/views/planetView.js";
 import { slipspace } from "./views/slipspace.js";
 //import * as solar from '/views/solarsystem.js'
 
@@ -7,21 +7,19 @@ import { slipspace } from "./views/slipspace.js";
 //slipspace();
 
 function buttonAction(buttonSelected) {
-    let oldButton = document.getElementsByClassName("btn");
-      Array.prototype.forEach.call(oldButton, function(el) {
-        el.setAttribute("class", "btn btn-outline-light");
-      });
-     
-     let button = document.getElementById(buttonSelected);
-     button.setAttribute("class", "btn btn-light");
+  let oldButton = document.getElementsByClassName("btn");
+  Array.prototype.forEach.call(oldButton, function (el) {
+    el.setAttribute("class", "btn btn-outline-light");
+  });
 
+  let button = document.getElementById(buttonSelected);
+  button.setAttribute("class", "btn btn-light");
 }
 
 
 let currentPlanet = 'earth';
 let animating = false;
 window.onload = showPlanetView(currentPlanet, true);
-
 
 const changePlanet = (planet) => {
     if (currentPlanet === planet || animating) return;
@@ -62,4 +60,3 @@ const backToOrbit = () => {
     showPlanetView(currentPlanet, true);
 }
 window.backToOrbit = backToOrbit;
-
