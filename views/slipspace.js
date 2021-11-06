@@ -1,7 +1,6 @@
-import * as THREE from "https://cdn.skypack.dev/three";
-// import * as THREE from "https://threejs.org/build/three.js";
+import * as THREE from "https://cdn.skypack.dev/three@0.124";
 
-let scene, camera, renderer, starGeo, stars;
+let scene, camera, renderer, starGeo, star, stars;
 
 function init() {
   scene = new THREE.Scene();
@@ -29,7 +28,7 @@ function init() {
     star.acceleration = 0.02;
     starGeo.vertices.push(star);
   }
-  let sprite = new THREE.TextureLoader().load("../images/star.png");
+  let sprite = new THREE.TextureLoader().load("./views/star.png");
   let starMaterial = new THREE.PointsMaterial({
     color: 0xaaaaaa,
     size: 0.7,
