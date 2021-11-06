@@ -5,7 +5,7 @@ import {
   goToPlanet,
 } from "./views/planetView.js";
 import { slipspace } from "./views/slipspace.js";
-import { solarView } from '/views/solarsystem.js'
+import { solarView, goToPlanet2 } from '/views/solarsystem.js'
 
 // showPlanetView('pluto');
 // slipspace();
@@ -21,21 +21,28 @@ function buttonAction(buttonSelected) {
   button.setAttribute("class", "btn btn-light");
 }
 
-let currentPlanet = "earth";
+let currentPlanet = "solar";
+let lastPlanet = "";
 let animating = false;
 const allowedPlanets = ['earth', 'mercury', 'venus', 'mars', 'moon', 'pluto'];
 
-window.onload = showPlanetView(currentPlanet, true);
+window.onload = solarView();
 
 const changePlanet = (planet) => {
   if (currentPlanet === planet || animating) return;
+  lastPlanet = currentPlanet;
   currentPlanet = planet;
   animating = true;
   for (let i = 0; i < 40; i++) {
-    setTimeout(() => changeCamera(), 20 * i);
+    setTimeout(() => {
+      if (lastPlanet == 'solar') {
+        goToPlanet2();
+      } else {
+        changeCamera();
+      }
+     }, 20 * i);
   }
   setTimeout(() => slipspace(), 800);
-  console.log(planet);
   setTimeout(() => {
     showPlanetView(planet, false);
     animating = false;
@@ -69,3 +76,18 @@ const backToOrbit = () => {
   showPlanetView(currentPlanet, true);
 };
 window.backToOrbit = backToOrbit;
+
+const changeToSolar = () => {
+  if (currentPlanet === 'solar' || animating) return;
+  currentPlanet = 'solar';
+  animating = true;
+  for (let i = 0; i < 40; i++) {
+    setTimeout(() => changeCamera(), 20 * i);
+  }
+  setTimeout(() => slipspace(), 800);
+  setTimeout(() => {
+    solarView();
+    animating = false;
+  }, 5000);
+}
+window.changeToSolar = changeToSolar;

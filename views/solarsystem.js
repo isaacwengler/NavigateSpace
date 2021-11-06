@@ -1,13 +1,13 @@
 import * as THREE from 'https://cdn.skypack.dev/three';
 import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js';
-
+let camera;
 export function solarView(){
 
     const date = Date.now() * 0.0001;
     const scene = new THREE.Scene();
     const background = new THREE.TextureLoader().load("./Images/isaacbackground.png");
     scene.background = background;
-    const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 2000);
+    camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 2000);
     const renderer = new THREE.WebGLRenderer({
         antialias: true
     });
@@ -16,8 +16,11 @@ export function solarView(){
     controls.maxDistance = 1500;
 
     renderer.setSize(window.innerWidth, window.innerHeight);
+    const canvas = document.querySelector('canvas');
+    if (canvas) {
+        canvas.parentNode.removeChild(canvas);
+    }
     document.body.appendChild(renderer.domElement);
-
 
     //spheres
     const sunSphere = new THREE.SphereGeometry(65,15,15);
@@ -204,4 +207,32 @@ export function solarView(){
     }
 
     animate();
+}
+
+let x = null;
+let y = null;
+let z = null;
+function slightZoom(posVal) {
+    if (posVal > 0) {
+        return (posVal) / 90;
+    } else {
+        return (posVal) / 90;
+    }
+}
+
+export function goToPlanet2() {
+    if (Math.abs(camera.position.x))
+    if (x === null) {
+        x = slightZoom(camera.position.x);
+    }
+    if (y === null) {
+        y = slightZoom(camera.position.y);
+    }
+    if (z === null) {
+        z = slightZoom(camera.position.z);
+    }
+    camera.position.x -= x;
+    camera.position.y -= y;
+    camera.position.z -= z;
+
 }
