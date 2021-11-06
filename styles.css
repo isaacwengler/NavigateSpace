@@ -1,1 +1,19 @@
 /** @format */
+body {
+  background-color: black;
+}
+
+#planetControls {
+  border: 2px solid white;
+  width: 190px;
+  height: 300px;
+  text-align: center;
+  border-radius: 15%;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding-top: 5px;
+}
+
+#planets {
+  padding-top: 100px;
+}

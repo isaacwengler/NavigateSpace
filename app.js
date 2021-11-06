@@ -2,4 +2,4 @@
 // import * as planet from "./views/planetView.js";
 import { slipspace } from "./views/slipspace.js";
 // import * as solar from "/views/solarsystem.js";
-slipspace();
+// slipspace();

@@ -2,7 +2,7 @@ import * as THREE from "https://cdn.skypack.dev/three@0.124";
 
 let scene, camera, renderer, starGeo, star, stars;
 
-export function slipspace() {
+export default function slipspace() {
   scene = new THREE.Scene();
   camera = new THREE.PerspectiveCamera(
     60,
@@ -55,4 +55,3 @@ function animate() {
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
 }
-// slipspace();
