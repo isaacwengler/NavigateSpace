@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -10,41 +11,148 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <!-- Goggle font links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Links -->
+    <!-- CSS only -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+    />
+
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <title>Explore Space</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
   </head>
   <body>
-    <!-- <div id="planetControls">
-      <h6>
-        You are currently on planet:
-        <p id="planetName"></p>
-      </h6>
-      <label id="planets">Select a Planet to visit:</label>
-      <select id="planetOptions" onchange="getOptions()">
-        <option value="Mercury">Mercury</option>
-        <option value="Venus">Venus</option>
-        <option value="Earth">Earth</option>
-        <option value="Mars">Mars</option>
-        <option value="Jupiter">Jupiter</option>
-        <option value="Saturn">Saturn</option>
-        <option value="Uranus">Uranus</option>
-        <option value="Neptune">Neptune</option>
-        <option value="Sun">Sun</option>
-      </select>
-
-      <div>
-        <button id="visitPlanetButton">Visit Planet</button>
+    <div id="planetControls">
+      <button
+        id="Mercury"
+        type="button"
+        class="top btn btn-outline-light"
+        onclick="visitPlanet()"
+      >
+        Land on Planet
+      </button>
+      <h6 id="currentplanet">Travel Solar System:</h6>
+      <div class="dropdown">
+        <button
+          id="Mercury"
+          type="button"
+          class="btn btn-outline-light"
+          onclick="changePlanet('mercury')"
+        >
+          Mercury
+        </button>
+        <button
+          id="Venus"
+          type="button"
+          class="btn btn-outline-light"
+          onclick="changePlanet('venus')"
+        >
+          Venus
+        </button>
+        <button
+          id="Earth"
+          type="button"
+          class="btn btn-outline-light"
+          onclick="changePlanet('earth')"
+        >
+          Earth
+        </button>
+        <button
+          id="Mars"
+          type="button"
+          class="btn btn-outline-light"
+          onclick="changePlanet('mars')"
+        >
+          Mars
+        </button>
+        <button
+          id="Jupiter"
+          type="button"
+          class="btn btn-outline-light"
+          onclick="changePlanet('jupiter')"
+        >
+          Jupiter
+        </button>
+        <button
+          id="Saturn"
+          type="button"
+          class="btn btn-outline-light"
+          onclick="changePlanet('saturn')"
+        >
+          Saturn
+        </button>
+        <button
+          id="Uranus"
+          type="button"
+          class="btn btn-outline-light"
+          onclick="changePlanet('uranus')"
+        >
+          Uranus
+        </button>
+        <button
+          id="Neptune"
+          type="button"
+          class="btn btn-outline-light"
+          onclick="changePlanet('neptune')"
+        >
+          Neptune
+        </button>
+        <button
+          id="Pluto"
+          type="button"
+          class="btn btn-outline-light"
+          onclick="changePlanet('pluto')"
+        >
+          Pluto
+        </button>
+        <button
+          id="Moon"
+          type="button"
+          class="btn btn-outline-light"
+          onclick="changePlanet('moon')"
+        >
+          Moon
+        </button>
+        <button
+          id="SolarSystem"
+          type="button"
+          class="btn btn-outline-light"
+          onclick=""
+        >
+          Solar System
+        </button>
       </div>
-    </div> -->
+    </div>
+    <div id="planetControls2" hidden>
+      <button
+        id="Mercury"
+        type="button"
+        class="top btn btn-outline-light"
+        onclick="backToOrbit()"
+      >
+        Back to Orbit
+      </button>
+    </div>
 
-    <script>
-      function getOptions() {
-        document.getElementById("planetName").innerHTML =
-          document.getElementById("planetOptions").value;
-      }
-    </script>
-
+    <!-- bootstrap script -->
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
     <script type="module" src="app.js"></script>
   </body>
 </html>
