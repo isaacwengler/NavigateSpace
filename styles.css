@@ -1,8 +1,8 @@
-
-
 body {
     margin: 0;
     background-color: black;
+    background-image: url("Images/spaceShipWindow.png") !important;
+    z-index: 100 !important;
   }
 
   #planetControls {
@@ -35,7 +35,6 @@ body {
   }
   .btn{
       margin-bottom:25px;
-
   }
   #topButton{
       margin-top: 7px ;
