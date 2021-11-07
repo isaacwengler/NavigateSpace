@@ -68,3 +68,13 @@ const backToOrbit = () => {
   showPlanetView(currentPlanet, true);
 };
 window.backToOrbit = backToOrbit;
+
+const animation = () => {
+ let alertDiv = document.getElementById("alertCard");
+
+ alertDiv.classList.toggle("fadein");
+ alertDiv.classList.toggle("fadeout");
+ 
+}
+window.animation = animation;
+
