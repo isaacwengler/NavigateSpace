@@ -2,6 +2,9 @@ import * as THREE from 'https://cdn.skypack.dev/three';
 import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js';
     let scene,camera,renderer;
 export function showGroundView(currentPlanet){  
+
+    
+
     scene = new THREE.Scene;
 
     camera = new THREE.PerspectiveCamera(55, window.innerWidth/window.innerHeight, 45, 30000);

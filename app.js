@@ -97,3 +97,12 @@ const changeToSolar = () => {
   }, 5000);
 };
 window.changeToSolar = changeToSolar;
+const animation = () => {
+ let alertDiv = document.getElementById("alertCard");
+
+ alertDiv.classList.toggle("fadein");
+ alertDiv.classList.toggle("fadeout");
+ 
+}
+window.animation = animation;
+
