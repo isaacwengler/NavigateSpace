@@ -1,4 +1,4 @@
-import { showGroundView } from "./views/groundView.js";
+import { showGroundView, leavePlanet } from "./views/groundView.js";
 import {
   showPlanetView,
   changeCamera,
@@ -126,11 +126,19 @@ const visitPlanet = () => {
 window.visitPlanet = visitPlanet;
 
 const backToOrbit = () => {
-  const menu = document.getElementById("planetControls");
-  menu.hidden = false;
+ 
   const menu2 = document.getElementById("planetControls2");
   menu2.hidden = true;
-  showPlanetView(currentPlanet, true);
+  for (let i = 0; i < 20; i++) {
+    setTimeout(() => {
+      leavePlanet();
+    }, i * 40);
+  }
+  setTimeout(() => {
+    showPlanetView(currentPlanet, true);
+    const menu = document.getElementById("planetControls");
+    menu.hidden = false;
+  }, 800);
 };
 window.backToOrbit = backToOrbit;
 
