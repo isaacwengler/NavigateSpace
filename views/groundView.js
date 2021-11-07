@@ -104,3 +104,8 @@ function animate() {
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
 }
+
+
+export function leavePlanet() {
+    camera.position.y += 100;
+}
