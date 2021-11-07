@@ -15,7 +15,7 @@ import { solarView, goToPlanet2 } from "./views/solarsystem.js";
 //https://www.universetoday.com/33415/interesting-facts-about-the-planets/
 //https://space-facts.com/planets/
 
-let alertFunFacts = {
+const alertFunFacts = {
     'mercurySpace' : ["Mercury is the smallest planet in our solar system", "Because of its rotation and speed it circles the sun, on Mercury there are only 2 days in a year!" ],
     'mercuryGround' : ["Mercury is hot, but not too hot for ice!", "Mercury’s craters are named after famous artists, musicians and authors" ],
     'venusSpace' : ["Venus doesn’t have any moons, and we aren’t sure why.", "Venus spins slowly in the opposite direction of most planets " ],
@@ -33,32 +33,46 @@ let alertFunFacts = {
     'moonSpace' : ["The moon helps stabilize our planet’s wobble and moderate our climate", "The Moon has a very thin atmosphere called an exosphere" ],
     'moonGround' : ["The Moons surface is actually dark.", "The moon has earthquakes, too" ],
     'solarSystem' : ["The solar system is 4.6 Billion years old","Light from the sun takes 8 minutes before it reaches earth","The solar system is 2 Light- years across"]
+    
 }
-let factState = 'solarSystem';
+
+const distanceFromSun = {
+  'earth': 499,
+  'mercury': 193,
+  'venus': 369,
+  'moon': 500,
+  'mars': 760,
+  'jupiter': 2595,
+  'saturn': 4759,
+  'neptune': 14998,
+  'uranus': 9575,
+  'sun': 0,
+  'pluto': 19680,
+  'solar': -20000
+};
+
+let currentPlanet = "solar";
+let lastPlanet = "";
+let animating = false;
+const allowedPlanets = ["earth", "mercury", "venus", "mars", "moon", "pluto"];
 
 let alertDiv = document.getElementById("alertCard");
 // animation for alerts
-const animation = (message, isError, time) => {
+const animation = (messages, isError) => {
+    const message = messages[0] // messages[Math.floor(Math.random()*messages.length)]; uncomment after demo
+    alertDiv.innerHTML = message;
     alertDiv.classList.toggle("fadeout");
-     setTimeout(()=>{
      alertDiv.classList.toggle("fadein");
-     alertDiv.innerHTML = message;
-     },500);
-     
-    }
-    window.animation = animation;
 
-function alertLoops(index){
-    if (factState === 'travel') return;
-    const messages = alertFunFacts[factState]
-    if (index > messages.length) {
-        index = 0;
-    }
     setTimeout(() => {
-        animation(messages[index], true, 5000);
-        alertLoops(index + 1);
-    }
-    , 5000 );
+      alertDiv.classList.toggle("fadeout");
+      alertDiv.classList.toggle("fadein");
+    }, 4500);
+}
+window.animation = animation;
+
+const calcDist = () => {
+  return Math.floor(Math.abs(distanceFromSun[lastPlanet] - distanceFromSun[currentPlanet]) / 5);
 }
 
 function buttonAction(buttonSelected) {
@@ -71,13 +85,10 @@ function buttonAction(buttonSelected) {
   button.setAttribute("class", "btn btn-light");
 }
 
-let currentPlanet = "solar";
-let lastPlanet = "";
-let animating = false;
-const allowedPlanets = ["earth", "mercury", "venus", "mars", "moon", "pluto"];
+
 
 window.onload = solarView();
-alertLoops(0);
+
 const changePlanet = (planet) => {
   if (currentPlanet === planet || animating) return;
   lastPlanet = currentPlanet;
@@ -95,6 +106,7 @@ const changePlanet = (planet) => {
   setTimeout(() => {
     const menu = document.getElementById("planetControls");
     menu.hidden = true;
+    animation(['Slipspace activated at ' + calcDist() + ' times the speed of light!'], false);
     slipspace();
   }, 800);
   setTimeout(() => {
@@ -103,7 +115,9 @@ const changePlanet = (planet) => {
     showPlanetView(planet, false);
     animating = false;
     buttonAction(currentPlanet);
-  }, 5000);
+  }, 5800);
+  setTimeout(() => animation(alertFunFacts[currentPlanet + 'Space'], false), 6300);
+
 };
 window.changePlanet = changePlanet;
 
@@ -122,6 +136,7 @@ const visitPlanet = () => {
     menu2.hidden = false;
     showGroundView(currentPlanet);
   }, 800);
+  setTimeout(() => animation(alertFunFacts[currentPlanet + 'Ground'], false), 1500);
 };
 window.visitPlanet = visitPlanet;
 
@@ -159,8 +174,10 @@ const changeToSolar = () => {
     animating = false;
     buttonAction('solar');
     const menu = document.getElementById("planetControls");
-    menu.hidden = true;
-  }, 5000);
+    menu.hidden = false;
+    
+  }, 5800);
+  setTimeout(() => animation(alertFunFacts['solarSystem'], false), 6300);
 };
 window.changeToSolar = changeToSolar;
 
