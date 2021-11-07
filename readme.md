@@ -55,3 +55,9 @@ Thanks to these free resources for helping us create Solar Explorer:
 -   https://www.solarsystemscope.com/textures/ provided free UV maps of planets
 -   https://opengameart.org/content/skiingpenguins-skybox-pack created the free skybox
 -   https://www.youtube.com/watch?v=Bed1z7f1EI4 gave us an intro in three.js
+
+## Try it out!
+
+You can try Solar Explorer here:
+http://solarexplorer.tech
+Note: we registered out domain late, so if the DNS has yet to sync and you cannot see anything, try this [link to Solar Explorer](http://34.122.217.77)
