@@ -1,8 +1,9 @@
 import * as THREE from "https://cdn.skypack.dev/three@0.124";
 
 let scene, camera, renderer, starGeo, star, stars;
-
+let shouldAnimate;
 export function slipspace() {
+  shouldAnimate = true;
   scene = new THREE.Scene();
   const background = new THREE.TextureLoader().load(
     "Images/isaacbackground.png"
@@ -52,6 +53,9 @@ export function slipspace() {
 }
 
 function animate() {
+  if (!shouldAnimate) {
+    return;
+  }
   starGeo.vertices.forEach((p) => {
     p.velocity += p.acceleration;
     p.y -= p.velocity;
@@ -65,4 +69,8 @@ function animate() {
 
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
+}
+
+export function stopSlipspace() {
+  shouldAnimate = false;
 }

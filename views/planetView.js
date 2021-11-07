@@ -27,7 +27,9 @@ let controls;
 let currentPlanet;
 let sphere;
 let moonGroup;
+let shouldAnimate;
 export function showPlanetView(planet, isFromPlanet) {
+    shouldAnimate = true;
     currentPlanet = planetImages[planet];
     const scene = new THREE.Scene();
     const background = new THREE.TextureLoader().load('Images/isaacbackground.png');
@@ -41,9 +43,7 @@ export function showPlanetView(planet, isFromPlanet) {
         );
 
     const renderer = new THREE.WebGLRenderer(
-        {
-            antialias: true
-        }
+       
     );
     renderer.setSize(innerWidth, innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -98,18 +98,22 @@ export function showPlanetView(planet, isFromPlanet) {
     }
 
     function animate() {
+        if (!shouldAnimate) {
+            return;
+        }
         requestAnimationFrame(animate);
+        controls.update();
+
             sphere.rotation.y += .005;
             if (moonGroup) {
                 moonGroup.rotation.y += 0.01;
             }
-        controls.update();
         renderer.render(scene, camera);
         
         
     }
 
-    Array(200).fill().forEach(addStar);
+   Array(200).fill().forEach(addStar);
     if (!isFromPlanet) {
         for (let i = 0; i < 175; i++) {
             setTimeout(() => camera.position.z -= .5, 5 * i + i);
@@ -154,4 +158,8 @@ export function goToPlanet() {
     camera.position.x -= x;
     camera.position.y -= y;
     camera.position.z -= z;
+}
+
+export function stopPlanetView() {
+    shouldAnimate = false;
 }

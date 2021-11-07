@@ -1,8 +1,9 @@
 import * as THREE from 'https://cdn.skypack.dev/three';
 import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js';
 let camera;
+let shouldAnimate;
 export function solarView(){
-
+    shouldAnimate = true;
     const date = Date.now() * 0.0001;
     const scene = new THREE.Scene();
     const background = new THREE.TextureLoader().load("./Images/isaacbackground.png");
@@ -191,6 +192,7 @@ export function solarView(){
     controls.update();
 
     function animate() {
+        if (!shouldAnimate) return;
         requestAnimationFrame(animate);
         controls.update();
         mercOrbit.rotation.y += 0.0479;
@@ -234,4 +236,8 @@ export function goToPlanet2() {
     camera.position.y -= y;
     camera.position.z -= z;
 
+}
+
+export function stopSolar() {
+    shouldAnimate = false;
 }

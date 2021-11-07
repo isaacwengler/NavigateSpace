@@ -1,11 +1,12 @@
-import { showGroundView, leavePlanet } from "./views/groundView.js";
+import { showGroundView, leavePlanet, stopGroundView } from "./views/groundView.js";
 import {
   showPlanetView,
   changeCamera,
   goToPlanet,
+  stopPlanetView
 } from "./views/planetView.js";
-import { slipspace } from "./views/slipspace.js";
-import { solarView, goToPlanet2 } from "./views/solarsystem.js";
+import { slipspace, stopSlipspace } from "./views/slipspace.js";
+import { solarView, goToPlanet2, stopSolar } from "./views/solarsystem.js";
 
 // showPlanetView('pluto');
 // slipspace();
@@ -110,11 +111,17 @@ const changePlanet = (planet) => {
     const menu = document.getElementById("planetControls");
     menu.hidden = true;
     animation(['Slipspace activated at ' + calcDist() + ' times the speed of light!'], false);
+    if (lastPlanet === 'solar') {
+      stopSolar();
+    } else {
+      stopPlanetView();
+    }
     slipspace();
   }, 800);
   setTimeout(() => {
     const menu = document.getElementById("planetControls");
     menu.hidden = false;
+    stopSlipspace();
     showPlanetView(planet, false);
     animating = false;
     buttonAction(currentPlanet);
@@ -141,6 +148,7 @@ const visitPlanet = () => {
   setTimeout(() => {
     const menu2 = document.getElementById("planetControls2");
     menu2.hidden = false;
+    stopPlanetView();
     showGroundView(currentPlanet);
   }, 800);
   setTimeout(() => animation(alertFunFacts[currentPlanet + 'Ground'], false), 1500);
@@ -157,6 +165,7 @@ const backToOrbit = () => {
     }, i * 40);
   }
   setTimeout(() => {
+    stopGroundView();
     showPlanetView(currentPlanet, true);
     const menu = document.getElementById("planetControls");
     menu.hidden = false;
@@ -172,11 +181,13 @@ const changeToSolar = () => {
     setTimeout(() => changeCamera(), 20 * i);
   }
   setTimeout(() => {
+      stopPlanetView();
       slipspace();
       const menu = document.getElementById("planetControls");
     menu.hidden = true;}
     , 800);
   setTimeout(() => {
+    stopSlipspace();
     solarView();
     animating = false;
     buttonAction('solar');
