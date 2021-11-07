@@ -61,8 +61,11 @@ let alertDiv = document.getElementById("alertCard");
 const animation = (messages, isError) => {
     const message = messages[0] // messages[Math.floor(Math.random()*messages.length)]; uncomment after demo
     alertDiv.innerHTML = message;
+    alertDiv.classList.add(isError ? 'alert-danger' : 'alert-primary')
+    alertDiv.classList.remove(!isError ? 'alert-danger' : 'alert-primary')
     alertDiv.classList.toggle("fadeout");
      alertDiv.classList.toggle("fadein");
+     
 
     setTimeout(() => {
       alertDiv.classList.toggle("fadeout");
@@ -123,7 +126,11 @@ window.changePlanet = changePlanet;
 
 const visitPlanet = () => {
   if (!allowedPlanets.includes(currentPlanet)) {
-    // error
+    if (currentPlanet == 'solar') {
+      animation(["Select a planet from the menu to visit!"], true)
+    } else {
+      animation([currentPlanet[0].toUpperCase() + currentPlanet.substring(1) + ' is a gaseous planet, we cannot visit!'], true);
+    }
     return;
   }
   const menu = document.getElementById("planetControls");
