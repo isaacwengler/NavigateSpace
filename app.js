@@ -110,10 +110,11 @@ const changePlanet = (planet) => {
   setTimeout(() => {
     const menu = document.getElementById("planetControls");
     menu.hidden = true;
-    animation(['Slipspace activated at ' + calcDist() + ' times the speed of light!'], false);
     if (lastPlanet === 'solar') {
+      animation(['Hyperdrive activated!'], false);
       stopSolar();
     } else {
+      animation(['Slipspace activated at ' + calcDist() + ' times the speed of light!'], false);
       stopPlanetView();
     }
     slipspace();
