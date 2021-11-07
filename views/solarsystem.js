@@ -2,7 +2,13 @@ import * as THREE from 'https://cdn.skypack.dev/three';
 import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js';
 let camera;
 let shouldAnimate;
+let x = null;
+let y = null;
+let z = null;
 export function solarView(){
+    x = null;
+    y = null;
+    z = null;
     shouldAnimate = true;
     const date = Date.now() * 0.0001;
     const scene = new THREE.Scene();
@@ -210,9 +216,7 @@ export function solarView(){
     animate();
 }
 
-let x = null;
-let y = null;
-let z = null;
+
 function slightZoom(posVal) {
     if (posVal > 0) {
         return (posVal) / 90;

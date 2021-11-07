@@ -28,7 +28,16 @@ let currentPlanet;
 let sphere;
 let moonGroup;
 let shouldAnimate;
+let x = null;
+let y = null;
+let z = null;
+var angle = 0;
+
 export function showPlanetView(planet, isFromPlanet) {
+    x = null;
+    y = null;
+    z = null;
+    angle = 0;
     shouldAnimate = true;
     currentPlanet = planetImages[planet];
     const scene = new THREE.Scene();
@@ -122,7 +131,6 @@ export function showPlanetView(planet, isFromPlanet) {
     animate();
 }
 
-var angle = 0;
 
 export function changeCamera() {
     // camera.position.x = radius * Math.cos( angle );  
@@ -133,9 +141,7 @@ export function changeCamera() {
     angle += 1;
 }
 
-let x = null;
-let y = null;
-let z = null;
+
 function slightZoom(posVal) {
     if (posVal > 0) {
         return (posVal - currentPlanet.size) / 30;
