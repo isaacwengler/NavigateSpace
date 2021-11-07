@@ -100,7 +100,9 @@ export function showPlanetView(planet, isFromPlanet) {
     function animate() {
         requestAnimationFrame(animate);
             sphere.rotation.y += .005;
-            moonGroup.rotation.y += 0.01;
+            if (moonGroup) {
+                moonGroup.rotation.y += 0.01;
+            }
         controls.update();
         renderer.render(scene, camera);
         
