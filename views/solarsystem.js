@@ -28,7 +28,6 @@ export function solarView(){
 
     const mercSphere = new THREE.SphereGeometry(6,15,15);
     mercSphere.translate(100,0,0);
-    //mercSphere.translate(Math.cos(date) * 100,0, Math.sin(date) * 100);
     const mercTexture = new THREE.TextureLoader().load("./Images/mercuryUV.jpg")
     const mercMaterial = new THREE.MeshBasicMaterial({map: mercTexture})
     const mercury = new THREE.Mesh(mercSphere,mercMaterial);
