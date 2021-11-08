@@ -10,7 +10,7 @@ class Planet {
 
 const planetImages = {
     'earth': new Planet('./Images/earthUV.jpeg', 3),
-    'mercury': new Planet('/Images/2k_mercury.jpg', 1.14),
+    'mercury': new Planet('/Images/2_mercury.jpg', 1.14),
     'venus': new Planet('Images/2k_venus_surface.jpg', 2.85),
     'moon': new Planet('Images/2k_moon.jpg', 0.81),
     'mars': new Planet('Images/2k_mars.jpg', 1.56),
