@@ -60,7 +60,7 @@ const allowedPlanets = ["earth", "mercury", "venus", "mars", "moon", "pluto"];
 let alertDiv = document.getElementById("alertCard");
 // animation for alerts
 const animation = (messages, isError) => {
-    const message = messages[0] // messages[Math.floor(Math.random()*messages.length)]; uncomment after demo
+    const message = messages[Math.floor(Math.random()*messages.length)]; 
     alertDiv.innerHTML = message;
     alertDiv.classList.add(isError ? 'alert-danger' : 'alert-primary')
     alertDiv.classList.remove(!isError ? 'alert-danger' : 'alert-primary')
