@@ -93,14 +93,20 @@ function buttonAction(buttonSelected) {
 
 
 window.onload = () => {
+  solarView();
   if (document.querySelector('frameset')) {
     document.head.innerHTML = 
     `<link rel="icon" type="image/png" href="Images/planet-icon.png"/>
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <title>Solar Explorer</title>`;
   }
-  solarView();
 };
+if (document.querySelector('frameset')) {
+  document.head.innerHTML = 
+  `<link rel="icon" type="image/png" href="Images/planet-icon.png"/>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <title>Solar Explorer</title>`;
+}
 
 const changePlanet = (planet) => {
   if (currentPlanet === planet || animating) return;
