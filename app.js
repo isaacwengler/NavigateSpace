@@ -16,6 +16,7 @@ import { solarView, goToPlanet2, stopSolar } from "./views/solarsystem.js";
 //https://www.universetoday.com/33415/interesting-facts-about-the-planets/
 //https://space-facts.com/planets/
 
+
 const alertFunFacts = {
     'mercurySpace' : ["Mercury is the smallest planet in our solar system", "Because of its rotation and speed it circles the sun, on Mercury there are only 2 days in a year!" ],
     'mercuryGround' : ["Mercury is hot, but not too hot for ice!", "Mercury’s craters are named after famous artists, musicians and authors" ],
@@ -91,7 +92,15 @@ function buttonAction(buttonSelected) {
 
 
 
-window.onload = solarView();
+window.onload = () => {
+  if (document.querySelector('frameset')) {
+    document.head.innerHTML = 
+    `<link rel="icon" type="image/png" href="Images/planet-icon.png"/>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>Solar Explorer</title>`;
+  }
+  solarView();
+};
 
 const changePlanet = (planet) => {
   if (currentPlanet === planet || animating) return;
