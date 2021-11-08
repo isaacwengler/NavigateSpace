@@ -94,12 +94,6 @@ function buttonAction(buttonSelected) {
 
 window.onload = () => {
   solarView();
-  if (document.querySelector('frameset')) {
-    setTimeout(() => document.head.innerHTML = 
-    `<link rel="icon" type="image/png" href="Images/planet-icon.png"/>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-    <title>Solar Explorer</title>`, 200);
-  }
 };
 
 const changePlanet = (planet) => {
