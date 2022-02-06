@@ -1,5 +1,5 @@
-import * as THREE from 'https://cdn.skypack.dev/three';
-import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js';
+import * as THREE from "https://cdn.skypack.dev/three";
+import { OrbitControls } from "./orbitControls.js";
 
 class Planet {
     constructor(url, size) {
@@ -52,7 +52,7 @@ export function showPlanetView(planet, isFromPlanet) {
         );
 
     const renderer = new THREE.WebGLRenderer(
-       
+
     );
     renderer.setSize(innerWidth, innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -61,43 +61,43 @@ export function showPlanetView(planet, isFromPlanet) {
         canvas.parentNode.removeChild(canvas);
     }
     document.body.appendChild(renderer.domElement);
-    
-        sphere = new THREE
-            .Mesh(new THREE.SphereGeometry(currentPlanet.size, 50, 50),
+
+    sphere = new THREE
+        .Mesh(new THREE.SphereGeometry(currentPlanet.size, 50, 50),
             new THREE.MeshBasicMaterial({
                 //color: 0xFF0000
                 map: new THREE.TextureLoader().load(currentPlanet.url)
             })
         );
 
-        if(planet == "earth"){
-            const moonSphereGeometry = new THREE.SphereGeometry(1,15,15);
-            const moonSphereTexture = new THREE.TextureLoader().load("./Images/2k_moon.jpg");
-            const moonSphereMaterial = new THREE.MeshBasicMaterial({map: moonSphereTexture});
-            const moon = new THREE.Mesh(moonSphereGeometry,moonSphereMaterial);
-            moonSphereGeometry.translate(10,4,0);
-            moonGroup = new THREE.Group();
-            moonGroup.add(moon);
-            moonGroup.rotation.set(1.01,0,0);
-            
-            scene.add(moonGroup);
-        }
+    if (planet == "earth") {
+        const moonSphereGeometry = new THREE.SphereGeometry(1, 15, 15);
+        const moonSphereTexture = new THREE.TextureLoader().load("./Images/2k_moon.jpg");
+        const moonSphereMaterial = new THREE.MeshBasicMaterial({ map: moonSphereTexture });
+        const moon = new THREE.Mesh(moonSphereGeometry, moonSphereMaterial);
+        moonSphereGeometry.translate(10, 4, 0);
+        moonGroup = new THREE.Group();
+        moonGroup.add(moon);
+        moonGroup.rotation.set(1.01, 0, 0);
 
-        if(planet == 'saturn'){
-            const satRingGeometry = new THREE.TorusGeometry(7.5,0.8,2.5,100);
-            const ringTexture = new THREE.TextureLoader().load("./Images/2k_saturn_ring_alpha.png");
-            const ringMaterial = new THREE.MeshBasicMaterial({map: ringTexture});
-            const sRing = new THREE.Mesh(satRingGeometry,ringMaterial);
-            sRing.rotation.set(1.4,0,0);
-            scene.add(sRing);
-        }
-    
-        scene.add(sphere);
-        camera.position.z = isFromPlanet ? 15 : 100;
-        controls = new OrbitControls(camera, renderer.domElement);
+        scene.add(moonGroup);
+    }
+
+    if (planet == 'saturn') {
+        const satRingGeometry = new THREE.TorusGeometry(7.5, 0.8, 2.5, 100);
+        const ringTexture = new THREE.TextureLoader().load("./Images/2k_saturn_ring_alpha.png");
+        const ringMaterial = new THREE.MeshBasicMaterial({ map: ringTexture });
+        const sRing = new THREE.Mesh(satRingGeometry, ringMaterial);
+        sRing.rotation.set(1.4, 0, 0);
+        scene.add(sRing);
+    }
+
+    scene.add(sphere);
+    camera.position.z = isFromPlanet ? 15 : 100;
+    controls = new OrbitControls(camera, renderer.domElement);
     function addStar() {
         const geometry = new THREE.SphereGeometry(0.1, 24, 24);
-        const material = new THREE.MeshBasicMaterial({color: 0xffffff})
+        const material = new THREE.MeshBasicMaterial({ color: 0xffffff })
         const star = new THREE.Mesh(geometry, material);
 
         const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(200));
@@ -113,16 +113,16 @@ export function showPlanetView(planet, isFromPlanet) {
         requestAnimationFrame(animate);
         controls.update();
 
-            sphere.rotation.y += .005;
-            if (moonGroup) {
-                moonGroup.rotation.y += 0.01;
-            }
+        sphere.rotation.y += .005;
+        if (moonGroup) {
+            moonGroup.rotation.y += 0.01;
+        }
         renderer.render(scene, camera);
-        
-        
+
+
     }
 
-   Array(200).fill().forEach(addStar);
+    Array(200).fill().forEach(addStar);
     if (!isFromPlanet) {
         for (let i = 0; i < 175; i++) {
             setTimeout(() => camera.position.z -= .5, 5 * i + i);
@@ -136,7 +136,7 @@ export function changeCamera() {
     // camera.position.x = radius * Math.cos( angle );  
     // camera.position.z = radius * Math.sin( angle );
     // camera.position.z = radius * Math.sin( angle );
-    controls.target.set(angle,angle,angle);
+    controls.target.set(angle, angle, angle);
 
     angle += 1;
 }
@@ -152,9 +152,9 @@ function slightZoom(posVal) {
 
 export function goToPlanet() {
     if (Math.abs(camera.position.x))
-    if (x === null) {
-        x = slightZoom(camera.position.x);
-    }
+        if (x === null) {
+            x = slightZoom(camera.position.x);
+        }
     if (y === null) {
         y = slightZoom(camera.position.y);
     }

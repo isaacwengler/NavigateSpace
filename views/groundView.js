@@ -1,5 +1,6 @@
 import * as THREE from "https://cdn.skypack.dev/three";
-import { OrbitControls } from "https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js";
+import { OrbitControls } from "./orbitControls.js";
+
 let scene, camera, renderer;
 let shouldAnimate;
 
@@ -105,7 +106,7 @@ export function showGroundView(currentPlanet) {
 }
 function animate() {
   if (!shouldAnimate) {
-      return;
+    return;
   }
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
@@ -113,9 +114,9 @@ function animate() {
 
 
 export function leavePlanet() {
-    camera.position.y += 100;
+  camera.position.y += 100;
 }
 
 export function stopGroundView() {
-    shouldAnimate = false;
+  shouldAnimate = false;
 }
