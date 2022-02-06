@@ -60,5 +60,4 @@ Thanks to these free resources for helping us create Solar Explorer:
 
 You can try Solar Explorer here:
 
--   https://solarexplorer.tech
 -   https://isaacwengler.github.io/SolarExplorer/
