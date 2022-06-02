@@ -1,4 +1,5 @@
-import * as THREE from "https://cdn.skypack.dev/three";
+import * as THREE from "https://cdn.skypack.dev/three@0.124";
+
 import { OrbitControls } from "./orbitControls.js";
 
 let camera;
@@ -39,7 +40,7 @@ export function solarView() {
 
     const mercSphere = new THREE.SphereGeometry(6, 15, 15);
     mercSphere.translate(100, 0, 0);
-    const mercTexture = new THREE.TextureLoader().load("./Images/mercuryUV.jpg")
+    const mercTexture = new THREE.TextureLoader().load("./Images/2_mercury.jpg")
     const mercMaterial = new THREE.MeshBasicMaterial({ map: mercTexture })
     const mercury = new THREE.Mesh(mercSphere, mercMaterial);
 

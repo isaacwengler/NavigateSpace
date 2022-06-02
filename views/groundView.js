@@ -1,4 +1,5 @@
-import * as THREE from "https://cdn.skypack.dev/three";
+import * as THREE from "https://cdn.skypack.dev/three@0.124";
+
 import { OrbitControls } from "./orbitControls.js";
 
 let scene, camera, renderer;

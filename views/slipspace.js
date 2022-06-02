@@ -39,7 +39,7 @@ export function slipspace() {
     starGeo.vertices.push(star);
   }
   let sprite = new THREE.TextureLoader().load("./Images/star.png");
-  
+
 
   let starMaterial = new THREE.PointsMaterial({
     color: 0xaaaaaa,
