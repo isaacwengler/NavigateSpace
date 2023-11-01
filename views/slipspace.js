@@ -1,4 +1,4 @@
-import * as THREE from "https://cdn.skypack.dev/three@0.124";
+import * as THREE from "./three.js"
 
 let scene, camera, renderer, starGeo, star, stars;
 let shouldAnimate;

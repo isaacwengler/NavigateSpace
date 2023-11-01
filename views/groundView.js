@@ -1,4 +1,4 @@
-import * as THREE from "https://cdn.skypack.dev/three@0.124";
+import * as THREE from "./three.js";
 
 import { OrbitControls } from "./orbitControls.js";
 

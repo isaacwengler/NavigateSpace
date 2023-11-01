@@ -1,4 +1,4 @@
-import * as THREE from "https://cdn.skypack.dev/three";
+import * as THREE from "./three.js";
 
 export const OrbitControls = function (object, domElement) {
 

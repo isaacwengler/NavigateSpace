@@ -1,5 +1,4 @@
-import * as THREE from "https://cdn.skypack.dev/three@0.124";
-
+import * as THREE from "./three.js"
 import { OrbitControls } from "./orbitControls.js";
 
 class Planet {
@@ -52,9 +51,7 @@ export function showPlanetView(planet, isFromPlanet) {
             1000
         );
 
-    const renderer = new THREE.WebGLRenderer(
-
-    );
+    const renderer = new THREE.WebGLRenderer();
     renderer.setSize(innerWidth, innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
     const canvas = document.querySelector('canvas');
